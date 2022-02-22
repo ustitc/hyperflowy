@@ -1,0 +1,45 @@
+<html>
+<head>
+    <script src="https://unpkg.com/hyperscript.org@0.9.5"></script>
+</head>
+<body>
+<h1>Workflowy clone</h1>
+
+<ul _="on keydown[key is 'Enter'] halt the event
+            then make <li/>
+            then set it.contentEditable to 'true'
+            then put it after target
+            then call it.focus()
+        on keydown[key is 'Backspace']
+            if no target.textContent
+                if me.children.length > 2
+                    get previous <li/> from target
+                    if no it
+                        get next <li/> from target
+                    end
+                call it.focus()
+                then remove target
+                end
+            end
+        on keydown[key is 'ArrowUp']
+            get previous <li/> from target
+            if no it == false
+                call it.focus()
+            end
+        on keydown[key is 'ArrowDown']
+            get next <li/> from target
+            if no it == false
+                call it.focus()
+            end
+"
+>
+    <li contenteditable="true"></li>
+    <button _="
+    on click make <li/>
+        then set it.contentEditable to 'true'
+        then put it before target
+        then call it.focus()">Add row
+    </button>
+</ul>
+</body>
+</html>
