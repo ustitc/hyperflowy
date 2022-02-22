@@ -3,7 +3,7 @@
     <script src="https://unpkg.com/hyperscript.org@0.9.5"></script>
     <style>
         ul {
-            list-style: inside;
+            list-style: disc;
         }
     </style>
     <title>Hyperflowy</title>
@@ -36,6 +36,15 @@
             get next <li/> from target
             if no it == false
                 call it.focus()
+            end
+        on keydown[key is 'Tab']
+            halt the event
+            then get previous <li/> from target within parentElement of target
+            if no it == false
+                then make <ul/>
+                then put it before target
+                then put target at the start of it
+                then call target.focus()
             end
 "
 >
