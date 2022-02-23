@@ -12,46 +12,54 @@
 <body>
 <h1>Workflowy clone</h1>
 
-<ul _="on keydown[key is 'Enter'] halt the event
-            then make <li/>
-            then set it.contentEditable to 'true'
-            then put it after target
-            then call it.focus()
-        on keydown[key is 'Backspace']
-            if no target.textContent
-                if me.children.length > 2
-                    get previous <li/> from target
-                    if no it
-                        get next <li/> from target
-                    end
-                call it.focus()
-                then remove target
+<ul _="
+    on keydown[key is 'Enter']
+        halt the event
+        then make <li/>
+        then set it.contentEditable to 'true'
+        then put it after target
+        then call it.focus()
+    on keydown[key is 'Backspace']
+        if no target.textContent
+            if me.children.length > 2
+                get previous <li/> from target
+                if no it
+                    get next <li/> from target
                 end
+            call it.focus()
+            then remove target
             end
-        on keydown[key is 'ArrowUp']
-            get previous <li/> from target
-            if no it == false
-                call it.focus()
-            end
-        on keydown[key is 'ArrowDown']
-            get next <li/> from target
-            if no it == false
-                call it.focus()
-            end
-        on keydown[key is 'Tab']
-            halt the event
-            then get previous <li/> from target within parentElement of target
-            if no it == false
-                then make <ul/>
-                then put it before target
-                then put target at the start of it
-                then call target.focus()
-            end
+        end
+    on keydown[key is 'ArrowUp']
+        get previous <li/> from target
+        if no it == false
+            call it.focus()
+        end
+    on keydown[key is 'ArrowDown']
+        get next <li/> from target
+        if no it == false
+            call it.focus()
+        end
+    on keydown[key is 'Tab']
+        halt the event
+        then get previous <li/> from target within parentElement of target
+        if no it == false
+            then make <ul/>
+            then put it before target
+            then put target at the start of it
+            then call target.focus()
+        end
 "
 >
-    <li contenteditable="true"></li>
-    <button _="
-    on click make <li/>
+    <li contenteditable="true" _="
+    on click 1
+        set my.textContent to ''
+        then toggle @hidden on next <button/>
+">Tap on me
+    </li>
+    <button hidden _="
+    on click
+        make <li/>
         then set it.contentEditable to 'true'
         then put it before target
         then call it.focus()">Add row
