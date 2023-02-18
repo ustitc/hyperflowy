@@ -1,31 +1,13 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/hyperscript.org@0.9.5"></script>
-    <style>
-        ul {
-            list-style: disc;
-        }
-    </style>
+    <script src="https://unpkg.com/hyperscript.org@0.9.7"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <title>Hyperflowy</title>
 </head>
 <body>
 <h1>Workflowy clone</h1>
-<div id="copy" >
-    <button _="on click put me as HTML after me _hyperscript.processNode(#copy)">Test</button>
-</div>
 
-<!--<button _="on click log me">Test</button>-->
-<!--<button _="on click get Object.assign(me, {}) as HTML then log it">Test</button>-->
-<!--<button _="on click get Object.assign(me, {}) as HTML then put it after me">Test</button>-->
-<!--<button _="on click call console.log(me)">Test</button>-->
-<button _="on click log me as String">Test</button>
-<button _="on click log me as HTML">Test</button>
-<button _="on click log me as Fragment">Test</button>
-<button _="on click log me as String">Test</button>
-<!--<button _="on click me as Fragment then log it">Test</button>-->
-
-<!--<button _='on click put my outerHTML as HTML after me'>Test</button>-->
 <ul _="
     on keydown[key is 'Enter']
         halt the event
