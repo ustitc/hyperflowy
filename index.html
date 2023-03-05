@@ -8,12 +8,12 @@
 <body>
 <h1>Workflowy clone</h1>
 
-<ul _="
+<ul id="list" _="
     on keydown[key is 'Enter']
         halt the event
-        then make <li/>
-        then set it.contentEditable to 'true'
+        append `<li contentEditable='true'></li>`
         then put it after target
+        then get next <li/> from target
         then call it.focus()
     on keydown[key is 'Backspace']
         if no target.textContent
@@ -47,19 +47,14 @@
         end
 "
 >
-    <li contenteditable="true" _="
-    on click 1
-        set my.textContent to ''
-        then toggle @hidden on next <button/>
-">Tap on me
-    </li>
-    <button hidden _="
-    on click
-        make <li/>
-        then set it.contentEditable to 'true'
-        then put it before target
-        then call it.focus()">Add row
-    </button>
 </ul>
+<button _="
+    on click
+        append `<li contentEditable='true'></li>`
+        then put it at the end of #list
+        then get previous <li/>
+        then call it.focus()
+    ">+
+</button>
 </body>
 </html>
