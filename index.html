@@ -6,55 +6,60 @@
     <title>Hyperflowy</title>
 </head>
 <body>
-<h1>Workflowy clone</h1>
+    <main>
+        <h1>Workflowy clone</h1>
 
-<ul id="list" _="
-    on keydown[key is 'Enter']
-        halt the event
-        append `<li contentEditable='true'></li>`
-        then put it after target
-        then get next <li/> from target
-        then call it.focus()
-    on keydown[key is 'Backspace']
-        if no target.textContent
-            if me.children.length > 2
-                get previous <li/> from target
-                if no it
-                    get next <li/> from target
+        <ul id="list" _="
+            on keydown[key is 'Enter']
+                halt the event
+                append `<li contentEditable='true'></li>`
+                then put it after target
+                then get next <li/> from target
+                then call it.focus()
+            on keydown[key is 'Backspace']
+                if no target.textContent
+                    if me.children.length > 2
+                        get previous <li/> from target
+                        if no it
+                            get next <li/> from target
+                        end
+                    call it.focus()
+                    then remove target
+                    end
                 end
-            call it.focus()
-            then remove target
-            end
-        end
-    on keydown[key is 'ArrowUp']
-        get previous <li/> from target
-        if no it == false
-            call it.focus()
-        end
-    on keydown[key is 'ArrowDown']
-        get next <li/> from target
-        if no it == false
-            call it.focus()
-        end
-    on keydown[key is 'Tab']
-        halt the event
-        then get previous <li/> from target within parentElement of target
-        if no it == false
-            then make <ul/>
-            then put it before target
-            then put target at the start of it
-            then call target.focus()
-        end
-"
->
-</ul>
-<button _="
-    on click
-        append `<li contentEditable='true'></li>`
-        then put it at the end of #list
-        then get previous <li/>
-        then call it.focus()
-    ">+
-</button>
+            on keydown[key is 'ArrowUp']
+                get previous <li/> from target
+                if no it == false
+                    call it.focus()
+                end
+            on keydown[key is 'ArrowDown']
+                get next <li/> from target
+                if no it == false
+                    call it.focus()
+                end
+            on keydown[key is 'Tab']
+                halt the event
+                then get previous <li/> from target within parentElement of target
+                if no it == false
+                    then make <ul/>
+                    then put it before target
+                    then put target at the start of it
+                    then call target.focus()
+                end
+        "
+        >
+        </ul>
+        <button _="
+            on click
+                append `<li contentEditable='true'></li>`
+                then put it at the end of #list
+                then get previous <li/>
+                then call it.focus()
+            ">+
+        </button>
+    </main>
+    <footer>
+        <a href="https://github.com/ustits/hyperflowy">Github</a>
+    </footer>
 </body>
 </html>
